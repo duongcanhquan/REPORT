@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const hangMucSelect = document.getElementById('hang-muc');
     const chiTietSelect = document.getElementById('chi-tiet');
     const otherDetailInput = document.getElementById('other-detail-input');
+    const noiDungInput = document.getElementById('noi-dung'); // Thêm textarea
 
     let reporterName = '';
 
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // *** LOGIC MỚI: Hiện ô nhập liệu khi chọn "Khác" ***
+    // Hiện ô nhập liệu khi chọn "Khác"
     chiTietSelect.addEventListener('change', function() {
         if (this.value === 'Khác') {
             otherDetailInput.classList.remove('hidden');
@@ -68,18 +69,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(reportForm);
         formData.append('nguoiBaoCao', reporterName);
 
-        // *** LOGIC MỚI: Lấy giá trị từ ô "Khác" nếu được chọn ***
         let chiTietValue = formData.get('chiTiet');
         if (chiTietValue === 'Khác' && !otherDetailInput.classList.contains('hidden')) {
             const otherText = otherDetailInput.value.trim();
             if (otherText) {
-                // Gửi đi giá trị người dùng nhập thay vì chữ "Khác"
                 formData.set('chiTiet', otherText);
             }
         }
 
-        // Dán Web App URL của bạn vào đây
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyvehKwFNITiV71iqPfwuoFSFU5R1yRWHug6_fI8iF5C3rpsA1h0i50Bhu_y98XZxNSQ/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyvehKwFNITiV71iqPfwuoFSFU5R1yRWHug6_fI8iF5C3rpsA1h0i50Bhu_y98XZxNSQ/exec'; // Dán Web App URL của bạn vào đây
 
         fetch(SCRIPT_URL, {
             method: 'POST',
@@ -88,11 +86,22 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                messageEl.textContent = data.message;
+                // *** THAY ĐỔI CHÍNH Ở ĐÂY ***
+                // Thay vì reset toàn bộ form, chúng ta chỉ xóa những gì cần thiết
+                // để người dùng có thể báo cáo vấn đề tiếp theo ngay lập tức.
+                messageEl.textContent = "Gửi thành công! Bạn có thể tiếp tục báo cáo vấn đề khác.";
                 messageEl.className = 'success';
-                reportForm.reset();
+                
+                // Reset các lựa chọn và nội dung
+                hangMucSelect.value = "";
                 chiTietSelect.innerHTML = '<option value="">-- Vui lòng chọn hạng mục trước --</option>';
+                noiDungInput.value = "";
+                otherDetailInput.value = "";
                 otherDetailInput.classList.add('hidden');
+                
+                // Cuộn lên đầu form để người dùng thấy thông báo
+                reportContainer.scrollIntoView({ behavior: 'smooth' });
+
             } else { throw new Error(data.message); }
         })
         .catch(error => {
