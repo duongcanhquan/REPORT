@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const reporterNameInput = document.getElementById('reporter-name');
     const reportForm = document.getElementById('report-form');
     const messageEl = document.getElementById('message');
-    const submitBtn = document.getElementById('submit-btn');
+    const continueBtn = document.getElementById('continue-btn');
     const coSoSelect = document.getElementById('co-so');
     const imageUploadInput = document.getElementById('image-upload');
     const fileListDisplay = document.getElementById('file-list-display');
