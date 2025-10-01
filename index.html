@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Cơ Sở Vật Chất - Cao Đẳng Việt Mỹ Hà Nội</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div id="login-container">
+            <img src="https://apc.edu.vn/wp-content/uploads/2021/10/logo-vi.png" alt="Logo Viet My College" class="logo">
+            <h1>Hệ thống Báo cáo Cơ sở vật chất</h1>
+            <p>Vui lòng nhập Tên hoặc Email của bạn để tiếp tục</p>
+            <input type="text" id="reporter-name" placeholder="Nhập tên hoặc email..." required>
+            <button id="continue-btn">Tiếp tục</button>
+        </div>
+
+        <div id="report-container" class="hidden">
+            <h1>Tạo Báo Cáo Mới</h1>
+            <form id="report-form">
+                <div class="form-group">
+                    <label for="co-so">1. Chọn cơ sở:</label>
+                    <select id="co-so" name="coSo" required>
+                        <option value="">-- Vui lòng chọn --</option>
+                        <option value="VietMy College Đinh Lê">VietMy College Đinh Lê</option>
+                        <option value="VietMy College Cầu Giấy">VietMy College Cầu Giấy</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="hang-muc">2. Chọn hạng mục báo cáo:</label>
+                    <select id="hang-muc" name="hangMuc" required>
+                        <option value="">-- Vui lòng chọn --</option>
+                        <option value="Cơ sở vật chất">Cơ sở vật chất</option>
+                        <option value="Tác phong CBNV">Tác phong CBNV</option>
+                        <option value="Tác phong sinh viên">Tác phong sinh viên</option>
+                        <option value="Các vấn đề khác">Các vấn đề khác</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="chi-tiet">3. Chi tiết hạng mục:</label>
+                    <select id="chi-tiet" name="chiTiet" required>
+                        <option value="">-- Vui lòng chọn hạng mục trước --</option>
+                    </select>
+                    <input type="text" id="other-detail-input" class="hidden" placeholder="Vui lòng ghi rõ vấn đề khác...">
+                </div>
+
+                <div class="form-group">
+                    <label for="noi-dung">4. Mô tả chi tiết vấn đề:</label>
+                    <textarea id="noi-dung" name="noiDung" rows="5" placeholder="Mô tả rõ vấn đề bạn gặp phải, vị trí cụ thể..." required></textarea>
+                </div>
+
+                <button type="submit" id="submit-btn">Gửi Báo Cáo</button>
+            </form>
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
