@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Dán Web App URL MỚI NHẤT của bạn vào đây
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMNgHgieRCQuRbPh984DtJ3rQk_zVEjaRAYoysdrHyxz1Wf3U_PYf7rudF8mnhqg-V5A/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwA_HOPWaY2VlahMaLaQT3iqcURSzIBDDNC7Tp20qGEp5lo4S1gyXtQsnV3wIbS89M5Vg/exec';
 
     const loginContainer = document.getElementById('login-container');
     const reportContainer = document.getElementById('report-container');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let i = 0; i < files.length; i++) {
                 const fileItem = document.createElement('div');
                 fileItem.className = 'file-item';
-                fileItem.textContent = files[i].name;
+                fileItem.textContent = files[i].name; // Đã sửa lỗi: Dùng textContent
                 fileListDisplay.appendChild(fileItem);
             }
         }
