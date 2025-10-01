@@ -163,12 +163,15 @@ button:disabled {
     width: 100%;
 }
 
-#file-name-display {
-    display: block;
+#file-list-display {
     margin-top: 10px;
+}
+
+.file-item {
     font-style: italic;
     color: var(--muted-text-color);
     font-size: 0.9rem;
+    padding: 2px 0;
 }
 
 /* --- Các lớp Tiện ích --- */
