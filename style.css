@@ -1,11 +1,12 @@
-/* --- Giai đoạn 1: Cài đặt chung & Biến màu (Color Variables) --- */
+/* --- Cài đặt chung & Biến màu --- */
 :root {
     --primary-color: #0056b3;
     --primary-hover: #004a99;
-    --background-color: #f0f2f5;
+    --background-color: #f4f7f9;
     --container-bg: #ffffff;
-    --text-color: #333;
-    --border-color: #ccc;
+    --text-color: #212529;
+    --muted-text-color: #6c757d;
+    --border-color: #dee2e6;
     --success-color: #28a745;
     --error-color: #dc3545;
 }
@@ -24,48 +25,50 @@ body {
     font-size: 16px;
 }
 
-/* --- Giai đoạn 2: Bố cục chính (Layout) --- */
+/* --- Bố cục chính --- */
 .container {
     background-color: var(--container-bg);
-    padding: 40px;
+    padding: 30px 40px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
     width: 100%;
     max-width: 700px;
     text-align: center;
-    transition: all 0.3s ease;
 }
 
-/* --- Giai đoạn 3: Phần tử Thương hiệu và Văn bản --- */
+/* --- Phần tử Thương hiệu và Văn bản --- */
 .logo { 
-    max-width: 250px;
+    max-width: 220px;
     height: auto;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 25px auto;
     display: block;
 }
 
 h1 { 
     color: var(--primary-color); 
-    font-size: 2em; 
+    font-size: 1.8em;
     margin-bottom: 1rem; 
-    font-weight: 700; 
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 p { 
-    font-size: 1.1rem; 
+    font-size: 1rem;
     line-height: 1.6; 
-    margin-bottom: 1rem; 
+    margin-bottom: 1rem;
+    color: var(--muted-text-color);
 }
 
 .instruction { 
     text-align: left; 
     margin-bottom: 1.5rem; 
-    font-weight: 500; 
+    font-size: 1.1rem;
+    color: var(--text-color);
 }
 
-/* --- Giai đoạn 4: Form và các Thành phần Nhập liệu --- */
+/* --- Form và các Thành phần Nhập liệu --- */
 .form-group { 
-    margin-bottom: 1.5rem; 
+    margin-bottom: 2rem; 
     text-align: left; 
 }
 
@@ -73,12 +76,12 @@ label {
     display: block; 
     margin-bottom: 8px; 
     font-weight: 500; 
-    font-size: 1.1rem; 
+    font-size: 1rem; 
 }
 
 input, select, textarea { 
     width: 100%; 
-    padding: 15px; 
+    padding: 12px 15px;
     border-radius: 8px; 
     border: 1px solid var(--border-color); 
     box-sizing: border-box; 
@@ -88,23 +91,23 @@ input, select, textarea {
 }
 
 textarea { 
-    min-height: 100px; 
+    min-height: 110px; 
 }
 
 input:focus, select:focus, textarea:focus { 
     outline: none; 
     border-color: var(--primary-color); 
-    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2); 
+    box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.15); 
 }
 
 button { 
     width: 100%; 
-    padding: 16px; 
+    padding: 15px; 
     border-radius: 8px; 
     border: none; 
     background-color: var(--primary-color); 
     color: white; 
-    font-size: 1.2rem; 
+    font-size: 1.1rem;
     font-weight: 700; 
     cursor: pointer; 
     transition: background-color 0.3s, transform 0.2s; 
@@ -122,62 +125,84 @@ button:disabled {
     transform: none; 
 }
 
-/* --- Giai đoạn 5: Các Hạng mục Báo cáo --- */
+/* --- Các Hạng mục Báo cáo --- */
 .report-category {
     text-align: left;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 25px;
 }
 
 .report-category h2 {
-    margin: 0 0 5px 0;
-    font-size: 1.3rem;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
     color: var(--text-color);
+    text-transform: uppercase;
 }
 
 .category-note {
-    font-size: 0.9rem;
-    color: #666;
-    margin: 0 0 15px 0;
+    font-size: 0.85rem;
+    color: var(--muted-text-color);
+    margin: 4px 0 12px 0;
     font-style: italic;
+    line-height: 1.5;
 }
 
-/* --- Giai đoạn 6: Các lớp Tiện ích (Thông báo, Trạng thái ẩn) --- */
+/* --- Phần tải file --- */
+.file-upload-group {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+#image-upload {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+#file-name-display {
+    display: block;
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--muted-text-color);
+    font-size: 0.9rem;
+}
+
+/* --- Các lớp Tiện ích --- */
 .hidden { 
     display: none; 
 }
-
 #message { 
     margin-top: 20px; 
     font-weight: 500; 
-    font-size: 1.1rem; 
+    font-size: 1rem; 
 }
+.success { color: var(--success-color); }
+.error { color: var(--error-color); }
 
-.success { 
-    color: var(--success-color); 
-}
-
-.error { 
-    color: var(--error-color); 
-}
-
-/* --- Giai đoạn 7: Responsive cho Thiết bị Di động --- */
+/* --- Responsive cho Thiết bị Di động --- */
 @media (max-width: 600px) {
     body { 
         padding: 10px; 
     }
-    
     .container { 
-        padding: 20px; 
+        padding: 20px 25px;
     }
-    
     h1 { 
-        font-size: 1.5em; 
+        font-size: 1.6em; 
     }
-    
     .logo { 
-        max-width: 180px; 
+        max-width: 160px;
+        margin-bottom: 20px;
+    }
+    button {
+        padding: 14px;
+        font-size: 1rem;
+    }
+    textarea {
+        min-height: 100px;
     }
 }
