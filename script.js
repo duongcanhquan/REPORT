@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyvehKwFNITiV71iqPfwuoFSFU5R1yRWHug6_fI8iF5C3rpsA1h0i50Bhu_y98XZxNSQ/exec'; // Dán Web App URL của bạn vào đây
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyS5FD7mF9KlvcgZblrGINGCNMm_NpgOD1fY-ALUjZuQjf6HlkTLfldjm7nT8cqHmIS7Q/exec'; // Dán Web App URL của bạn vào đây
 
         fetch(SCRIPT_URL, {
             method: 'POST',
