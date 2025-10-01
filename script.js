@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Dán Web App URL MỚI NHẤT của bạn vào đây
-    const SCRIPT_URL = 'URL_CUA_BAN_O_DAY'; 
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwzt-1u7gfLgLghCRqiTBdmlSC3mhOAHhmsyKrc2R4X_I3GX4tGpEICu6W2I6rYDoFTsg/exec'; 
 
     const loginContainer = document.getElementById('login-container');
     const reportContainer = document.getElementById('report-container');
