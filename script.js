@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Dán Web App URL MỚI NHẤT của bạn vào đây
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwA_HOPWaY2VlahMaLaQT3iqcURSzIBDDNC7Tp20qGEp5lo4S1gyXtQsnV3wIbS89M5Vg/exec';
-
+    const continueBtn = document.getElementById('continue-btn');
     const loginContainer = document.getElementById('login-container');
     const reportContainer = document.getElementById('report-container');
     const reporterNameInput = document.getElementById('reporter-name');
     const reportForm = document.getElementById('report-form');
     const messageEl = document.getElementById('message');
-    const continueBtn = document.getElementById('continue-btn');
     const coSoSelect = document.getElementById('co-so');
     const imageUploadInput = document.getElementById('image-upload');
     const fileListDisplay = document.getElementById('file-list-display');
