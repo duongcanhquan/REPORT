@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Dán Web App URL MỚI NHẤT của bạn vào đây
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby6lRRp9asP1KTJ4DHE82UPn_Pg-vW08oEnZQHSXrMfShcaM_Gwjig4hooEHUSGrcXdmw/exec'; 
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFspsIqO9Q25DwyqXoWIOL3soMfSNHnwglbOP9E2Y6nggAV5fxVAK3sovZzJ079PkWhA/exec'; 
 
     const loginContainer = document.getElementById('login-container');
     const reportContainer = document.getElementById('report-container');
