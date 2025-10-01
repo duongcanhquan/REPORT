@@ -1,139 +1,107 @@
-/* --- Cài đặt chung & Font chữ --- */
-:root {
-    --primary-color: #0056b3;
-    --primary-hover: #004a99;
-    --background-color: #f0f2f5;
-    --container-bg: #ffffff;
-    --text-color: #333;
-    --border-color: #ccc;
-    --success-color: #28a745;
-    --error-color: #dc3545;
-}
+document.addEventListener('DOMContentLoaded', function() {
+    // Lấy các thành phần DOM
+    const loginContainer = document.getElementById('login-container');
+    const reportContainer = document.getElementById('report-container');
+    const continueBtn = document.getElementById('continue-btn');
+    const reporterNameInput = document.getElementById('reporter-name');
+    const reportForm = document.getElementById('report-form');
+    const messageEl = document.getElementById('message');
+    const submitBtn = document.getElementById('submit-btn');
+    const hangMucSelect = document.getElementById('hang-muc');
+    const chiTietSelect = document.getElementById('chi-tiet');
+    const otherDetailInput = document.getElementById('other-detail-input');
 
-body {
-    font-family: 'Be Vietnam Pro', sans-serif; /* Sử dụng font mới */
-    background-color: var(--background-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-    font-size: 16px; /* Tăng kích thước chữ cơ bản */
-}
+    let reporterName = '';
 
-/* --- Bố cục chính --- */
-.container {
-    background-color: var(--container-bg);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    transition: all 0.3s ease;
-}
+    const subCategories = {
+        "Cơ sở vật chất": ["Vệ Sinh", "An Ninh/ An toàn", "Thiết Bị Dạy Học", "Khác"],
+        "Tác phong CBNV": ["Trang Phục", "Nề Nếp & Giao tiếp", "Khác"],
+        "Tác phong sinh viên": ["Trang Phục", "Nề Nếp & Giao tiếp", "Khác"],
+        "Các vấn đề khác": ["Vấn đề khác"]
+    };
 
-.logo {
-    max-width: 180px;
-    margin-bottom: 24px;
-}
+    // Xử lý chuyển từ màn hình đăng nhập sang form
+    continueBtn.addEventListener('click', function() {
+        if (reporterNameInput.value.trim() === '') {
+            alert('Vui lòng nhập tên hoặc email của bạn.');
+            return;
+        }
+        reporterName = reporterNameInput.value.trim();
+        loginContainer.classList.add('hidden');
+        reportContainer.classList.remove('hidden');
+    });
 
-h1 {
-    color: var(--primary-color);
-    font-size: 2em; /* Chữ to và rõ */
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
+    // Cập nhật dropdown Chi tiết khi Hạng mục thay đổi
+    hangMucSelect.addEventListener('change', function() {
+        const selectedCategory = this.value;
+        chiTietSelect.innerHTML = '<option value="">-- Vui lòng chọn --</option>';
+        otherDetailInput.classList.add('hidden'); // Luôn ẩn ô "Khác" khi thay đổi
 
-p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
+        if (selectedCategory && subCategories[selectedCategory]) {
+            subCategories[selectedCategory].forEach(function(sub) {
+                const option = document.createElement('option');
+                option.value = sub;
+                option.textContent = sub;
+                chiTietSelect.appendChild(option);
+            });
+        }
+    });
+    
+    // *** LOGIC MỚI: Hiện ô nhập liệu khi chọn "Khác" ***
+    chiTietSelect.addEventListener('change', function() {
+        if (this.value === 'Khác') {
+            otherDetailInput.classList.remove('hidden');
+        } else {
+            otherDetailInput.classList.add('hidden');
+        }
+    });
 
-/* --- Form và các thành phần --- */
-.form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 1.1rem;
-}
+    // Xử lý gửi form
+    reportForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Đang gửi...';
+        messageEl.textContent = '';
+        messageEl.className = '';
 
-input, select, textarea {
-    width: 100%;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    box-sizing: border-box;
-    font-size: 1rem;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
+        const formData = new FormData(reportForm);
+        formData.append('nguoiBaoCao', reporterName);
 
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
-}
+        // *** LOGIC MỚI: Lấy giá trị từ ô "Khác" nếu được chọn ***
+        let chiTietValue = formData.get('chiTiet');
+        if (chiTietValue === 'Khác' && !otherDetailInput.classList.contains('hidden')) {
+            const otherText = otherDetailInput.value.trim();
+            if (otherText) {
+                // Gửi đi giá trị người dùng nhập thay vì chữ "Khác"
+                formData.set('chiTiet', otherText);
+            }
+        }
 
-button {
-    width: 100%;
-    padding: 16px;
-    border-radius: 8px;
-    border: none;
-    background-color: var(--primary-color);
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
+        // Dán Web App URL của bạn vào đây
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyvehKwFNITiV71iqPfwuoFSFU5R1yRWHug6_fI8iF5C3rpsA1h0i50Bhu_y98XZxNSQ/exec';
 
-button:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-2px);
-}
-
-button:disabled {
-    background-color: #999;
-    cursor: not-allowed;
-}
-
-/* --- Các lớp tiện ích --- */
-.hidden {
-    display: none;
-}
-
-#other-detail-input {
-    margin-top: 10px; /* Thêm khoảng cách khi ô này hiện ra */
-}
-
-#message {
-    margin-top: 20px;
-    font-weight: 500;
-    font-size: 1.1rem;
-}
-
-.success { color: var(--success-color); }
-.error { color: var(--error-color); }
-
-/* --- Responsive cho điện thoại --- */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-    .container {
-        padding: 20px;
-    }
-    h1 {
-        font-size: 1.5em;
-    }
-}
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                messageEl.textContent = data.message;
+                messageEl.className = 'success';
+                reportForm.reset();
+                chiTietSelect.innerHTML = '<option value="">-- Vui lòng chọn hạng mục trước --</option>';
+                otherDetailInput.classList.add('hidden');
+            } else { throw new Error(data.message); }
+        })
+        .catch(error => {
+            messageEl.textContent = 'Lỗi: ' + error.message;
+            messageEl.className = 'error';
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Gửi Báo Cáo';
+        });
+    });
+});
