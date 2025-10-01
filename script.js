@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const loginContainer = document.getElementById('login-container');
     const reportContainer = document.getElementById('report-container');
-    const continueBtn = document.getElementById('continue-btn');
     const reporterNameInput = document.getElementById('reporter-name');
     const reportForm = document.getElementById('report-form');
     const messageEl = document.getElementById('message');
