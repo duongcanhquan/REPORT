@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Báo Cáo Cơ Sở Vật Chất - Cao Đẳng Việt Mỹ Hà Nội</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
         <div id="login-container">
-            <img src="https://apc.edu.vn/wp-content/uploads/2021/10/logo-vi.png" alt="Logo Viet My College" class="logo">
-            <h1>Hệ thống Báo cáo Cơ sở vật chất</h1>
+            <img src="https://raw.githubusercontent.com/duongcanhquan/image/main/logo%20vietmy.webp" alt="Logo Viet My College" class="logo">
+            <h1>Hệ thống Báo cáo Trực tuyến</h1>
             <p>Vui lòng nhập Tên hoặc Email của bạn để tiếp tục</p>
             <input type="text" id="reporter-name" placeholder="Nhập tên hoặc email..." required>
             <button id="continue-btn">Tiếp tục</button>
@@ -26,44 +23,45 @@
             <h1>Tạo Báo Cáo Mới</h1>
             <form id="report-form">
                 <div class="form-group">
-                    <label for="co-so">1. Chọn cơ sở:</label>
+                    <label for="co-so">1. Chọn cơ sở báo cáo:</label>
                     <select id="co-so" name="coSo" required>
                         <option value="">-- Vui lòng chọn --</option>
-                        <option value="VietMy College Đinh Lê">VietMy College Đinh Lê</option>
-                        <option value="VietMy College Cầu Giấy">VietMy College Cầu Giấy</option>
+                        <option value="Campus Cầu Giấy">Campus Cầu Giấy</option>
+                        <option value="Campus Đinh Lê">Campus Đinh Lê</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="hang-muc">2. Chọn hạng mục báo cáo:</label>
-                    <select id="hang-muc" name="hangMuc" required>
-                        <option value="">-- Vui lòng chọn --</option>
-                        <option value="Cơ sở vật chất">Cơ sở vật chất</option>
-                        <option value="Tác phong CBNV">Tác phong CBNV</option>
-                        <option value="Tác phong sinh viên">Tác phong sinh viên</option>
-                        <option value="Các vấn đề khác">Các vấn đề khác</option>
-                    </select>
+                <p class="instruction">2. Nhập nội dung vào các mục bạn muốn báo cáo (bỏ trống các mục không có vấn đề):</p>
+
+                <div class="report-category">
+                    <h2>Cơ sở Vật Chất</h2>
+                    <p class="category-note">Gồm: Vệ sinh, An ninh/An toàn, Thiết bị dạy học, Các vấn đề CSVC khác...</p>
+                    <textarea id="csvc-content" name="Cơ sở Vật Chất" placeholder="Nhập nội dung báo cáo về Cơ sở Vật Chất..."></textarea>
                 </div>
                 
-                <div class="form-group">
-                    <label for="chi-tiet">3. Chi tiết hạng mục:</label>
-                    <select id="chi-tiet" name="chiTiet" required>
-                        <option value="">-- Vui lòng chọn hạng mục trước --</option>
-                    </select>
-                    <input type="text" id="other-detail-input" class="hidden" placeholder="Vui lòng ghi rõ vấn đề khác...">
+                <div class="report-category">
+                    <h2>Tác Phong CBNV</h2>
+                    <p class="category-note">Gồm: Trang phục, Nề nếp & Giao tiếp, Các vấn đề khác về CBNV...</p>
+                    <textarea id="tpnv-content" name="Tác Phong CBNV" placeholder="Nhập nội dung báo cáo về Tác phong CBNV..."></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="noi-dung">4. Mô tả chi tiết vấn đề:</label>
-                    <textarea id="noi-dung" name="noiDung" rows="5" placeholder="Mô tả rõ vấn đề bạn gặp phải, vị trí cụ thể..." required></textarea>
+                <div class="report-category">
+                    <h2>Tác Phong Sinh Viên</h2>
+                    <p class="category-note">Gồm: Trang phục, Nề nếp & Giao tiếp, Các vấn đề khác về Sinh viên...</p>
+                    <textarea id="tpsv-content" name="Tác Phong Sinh Viên" placeholder="Nhập nội dung báo cáo về Tác phong Sinh viên..."></textarea>
+                </div>
+                
+                <div class="report-category">
+                    <h2>Các Vấn đề khác</h2>
+                    <p class="category-note">Các góp ý, đề xuất hoặc những vấn đề không thuộc các hạng mục trên.</p>
+                    <textarea id="other-content" name="Các Vấn đề khác" placeholder="Nhập nội dung báo cáo khác..."></textarea>
                 </div>
 
                 <button type="submit" id="submit-btn">Gửi Báo Cáo</button>
+                <p id="message"></p>
             </form>
-            <p id="message"></p>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
