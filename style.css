@@ -1,4 +1,4 @@
-/* --- Cài đặt chung & Font chữ --- */
+/* --- Giai đoạn 1: Cài đặt chung & Biến màu (Color Variables) --- */
 :root {
     --primary-color: #0056b3;
     --primary-hover: #004a99;
@@ -11,7 +11,7 @@
 }
 
 body {
-    font-family: 'Be Vietnam Pro', sans-serif; /* Sử dụng font mới */
+    font-family: 'Be Vietnam Pro', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     display: flex;
@@ -21,119 +21,163 @@ body {
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
-    font-size: 16px; /* Tăng kích thước chữ cơ bản */
+    font-size: 16px;
 }
 
-/* --- Bố cục chính --- */
+/* --- Giai đoạn 2: Bố cục chính (Layout) --- */
 .container {
     background-color: var(--container-bg);
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     text-align: center;
     transition: all 0.3s ease;
 }
 
-.logo {
-    max-width: 180px;
-    margin-bottom: 24px;
-}
-
-h1 {
-    color: var(--primary-color);
-    font-size: 2em; /* Chữ to và rõ */
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-
-p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-/* --- Form và các thành phần --- */
-.form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-
-label {
+/* --- Giai đoạn 3: Phần tử Thương hiệu và Văn bản --- */
+.logo { 
+    max-width: 250px;
+    height: auto;
+    margin: 0 auto 30px auto;
     display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 1.1rem;
 }
 
-input, select, textarea {
-    width: 100%;
-    padding: 15px;
+h1 { 
+    color: var(--primary-color); 
+    font-size: 2em; 
+    margin-bottom: 1rem; 
+    font-weight: 700; 
+}
+
+p { 
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    margin-bottom: 1rem; 
+}
+
+.instruction { 
+    text-align: left; 
+    margin-bottom: 1.5rem; 
+    font-weight: 500; 
+}
+
+/* --- Giai đoạn 4: Form và các Thành phần Nhập liệu --- */
+.form-group { 
+    margin-bottom: 1.5rem; 
+    text-align: left; 
+}
+
+label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: 500; 
+    font-size: 1.1rem; 
+}
+
+input, select, textarea { 
+    width: 100%; 
+    padding: 15px; 
+    border-radius: 8px; 
+    border: 1px solid var(--border-color); 
+    box-sizing: border-box; 
+    font-size: 1rem; 
+    font-family: 'Be Vietnam Pro', sans-serif; 
+    transition: border-color 0.3s, box-shadow 0.3s; 
+}
+
+textarea { 
+    min-height: 100px; 
+}
+
+input:focus, select:focus, textarea:focus { 
+    outline: none; 
+    border-color: var(--primary-color); 
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2); 
+}
+
+button { 
+    width: 100%; 
+    padding: 16px; 
+    border-radius: 8px; 
+    border: none; 
+    background-color: var(--primary-color); 
+    color: white; 
+    font-size: 1.2rem; 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s; 
+    margin-top: 20px; 
+}
+
+button:hover { 
+    background-color: var(--primary-hover); 
+    transform: translateY(-2px); 
+}
+
+button:disabled { 
+    background-color: #999; 
+    cursor: not-allowed; 
+    transform: none; 
+}
+
+/* --- Giai đoạn 5: Các Hạng mục Báo cáo --- */
+.report-category {
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
-    box-sizing: border-box;
-    font-size: 1rem;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
-}
-
-button {
-    width: 100%;
-    padding: 16px;
-    border-radius: 8px;
-    border: none;
-    background-color: var(--primary-color);
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-2px);
-}
-
-button:disabled {
-    background-color: #999;
-    cursor: not-allowed;
-}
-
-/* --- Các lớp tiện ích --- */
-.hidden {
-    display: none;
-}
-
-#other-detail-input {
-    margin-top: 10px; /* Thêm khoảng cách khi ô này hiện ra */
-}
-
-#message {
     margin-top: 20px;
-    font-weight: 500;
-    font-size: 1.1rem;
 }
 
-.success { color: var(--success-color); }
-.error { color: var(--error-color); }
+.report-category h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.3rem;
+    color: var(--text-color);
+}
 
-/* --- Responsive cho điện thoại --- */
+.category-note {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0 15px 0;
+    font-style: italic;
+}
+
+/* --- Giai đoạn 6: Các lớp Tiện ích (Thông báo, Trạng thái ẩn) --- */
+.hidden { 
+    display: none; 
+}
+
+#message { 
+    margin-top: 20px; 
+    font-weight: 500; 
+    font-size: 1.1rem; 
+}
+
+.success { 
+    color: var(--success-color); 
+}
+
+.error { 
+    color: var(--error-color); 
+}
+
+/* --- Giai đoạn 7: Responsive cho Thiết bị Di động --- */
 @media (max-width: 600px) {
-    body {
-        padding: 10px;
+    body { 
+        padding: 10px; 
     }
-    .container {
-        padding: 20px;
+    
+    .container { 
+        padding: 20px; 
     }
-    h1 {
-        font-size: 1.5em;
+    
+    h1 { 
+        font-size: 1.5em; 
+    }
+    
+    .logo { 
+        max-width: 180px; 
     }
 }
