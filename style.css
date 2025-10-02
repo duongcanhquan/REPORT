@@ -1,211 +1,53 @@
-/* --- Cài đặt chung & Biến màu --- */
 :root {
-    --primary-color: #0056b3;
-    --primary-hover: #004a99;
-    --background-color: #f4f7f9;
-    --container-bg: #ffffff;
-    --text-color: #212529;
-    --muted-text-color: #6c757d;
-    --border-color: #dee2e6;
-    --success-color: #28a745;
-    --error-color: #dc3545;
+    --primary-color: #0056b3; --primary-hover: #004a99; --background-color: #f4f7f9;
+    --container-bg: #ffffff; --text-color: #212529; --muted-text-color: #6c757d;
+    --border-color: #dee2e6; --success-color: #28a745; --error-color: #dc3545;
 }
-
 body {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-    font-size: 16px;
+    font-family: 'Be Vietnam Pro', sans-serif; background-color: var(--background-color);
+    color: var(--text-color); display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; font-size: 16px;
 }
-
-/* --- Bố cục chính --- */
 .container {
-    background-color: var(--container-bg);
-    padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 700px;
-    text-align: center;
+    background-color: var(--container-bg); padding: 30px 40px; border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08); width: 100%; max-width: 700px; text-align: center;
 }
-
-/* --- Phần tử Thương hiệu và Văn bản --- */
-.logo { 
-    max-width: 220px;
-    height: auto;
-    margin: 0 auto 25px auto;
-    display: block;
+.logo { max-width: 220px; height: auto; margin: 0 auto 25px auto; display: block; }
+h1 { color: var(--primary-color); font-size: 1.8em; margin-bottom: 1rem; font-weight: 700; text-transform: uppercase; }
+p { font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; color: var(--muted-text-color); }
+.instruction { text-align: left; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-color); }
+.form-group { margin-bottom: 2rem; text-align: left; }
+label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 1rem; }
+input, select, textarea {
+    width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid var(--border-color);
+    box-sizing: border-box; font-size: 1rem; font-family: 'Be Vietnam Pro', sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
-
-h1 { 
-    color: var(--primary-color); 
-    font-size: 1.8em;
-    margin-bottom: 1rem; 
-    font-weight: 700;
-    text-transform: uppercase;
+textarea { min-height: 110px; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.15); }
+button {
+    width: 100%; padding: 15px; border-radius: 8px; border: none; background-color: var(--primary-color);
+    color: white; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; margin-top: 20px;
 }
-
-p { 
-    font-size: 1rem;
-    line-height: 1.6; 
-    margin-bottom: 1rem;
-    color: var(--muted-text-color);
-}
-
-.instruction { 
-    text-align: left; 
-    margin-bottom: 1.5rem; 
-    font-size: 1.1rem;
-    color: var(--text-color);
-}
-
-/* --- Form và các Thành phần Nhập liệu --- */
-.form-group { 
-    margin-bottom: 2rem; 
-    text-align: left; 
-}
-
-label { 
-    display: block; 
-    margin-bottom: 8px; 
-    font-weight: 500; 
-    font-size: 1rem; 
-}
-
-input, select, textarea { 
-    width: 100%; 
-    padding: 12px 15px;
-    border-radius: 8px; 
-    border: 1px solid var(--border-color); 
-    box-sizing: border-box; 
-    font-size: 1rem; 
-    font-family: 'Be Vietnam Pro', sans-serif; 
-    transition: border-color 0.3s, box-shadow 0.3s; 
-}
-
-textarea { 
-    min-height: 110px; 
-}
-
-input:focus, select:focus, textarea:focus { 
-    outline: none; 
-    border-color: var(--primary-color); 
-    box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.15); 
-}
-
-button { 
-    width: 100%; 
-    padding: 15px; 
-    border-radius: 8px; 
-    border: none; 
-    background-color: var(--primary-color); 
-    color: white; 
-    font-size: 1.1rem;
-    font-weight: 700; 
-    cursor: pointer; 
-    transition: background-color 0.3s, transform 0.2s; 
-    margin-top: 20px; 
-}
-
-button:hover { 
-    background-color: var(--primary-hover); 
-    transform: translateY(-2px); 
-}
-
-button:disabled { 
-    background-color: #999; 
-    cursor: not-allowed; 
-    transform: none; 
-}
-
-/* --- Các Hạng mục Báo cáo --- */
-.report-category {
-    text-align: left;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    margin-top: 25px;
-}
-
-.report-category h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text-color);
-    text-transform: uppercase;
-}
-
-.category-note {
-    font-size: 0.85rem;
-    color: var(--muted-text-color);
-    margin: 4px 0 12px 0;
-    font-style: italic;
-    line-height: 1.5;
-}
-
-/* --- Phần tải file --- */
-.file-upload-group {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-}
-
-#image-upload {
-    border: 1px solid var(--border-color);
-    padding: 10px;
-    border-radius: 8px;
-    width: 100%;
-}
-
-#file-list-display {
-    margin-top: 10px;
-}
-
-.file-item {
-    font-style: italic;
-    color: var(--muted-text-color);
-    font-size: 0.9rem;
-    padding: 2px 0;
-}
-
-/* --- Các lớp Tiện ích --- */
-.hidden { 
-    display: none; 
-}
-#message { 
-    margin-top: 20px; 
-    font-weight: 500; 
-    font-size: 1rem; 
-}
+button:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
+button:disabled { background-color: #999; cursor: not-allowed; transform: none; }
+.report-category { text-align: left; padding-top: 20px; border-top: 1px solid var(--border-color); margin-top: 25px; }
+.report-category h2 { margin: 0; font-size: 1.2rem; font-weight: 700; color: var(--text-color); text-transform: uppercase; }
+.category-note { font-size: 0.85rem; color: var(--muted-text-color); margin: 4px 0 12px 0; font-style: italic; line-height: 1.5; }
+.file-upload-group { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+#image-upload { border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; width: 100%; }
+#file-list-display { margin-top: 10px; }
+.file-item { font-style: italic; color: var(--muted-text-color); font-size: 0.9rem; padding: 2px 0; }
+.hidden { display: none; }
+#message { margin-top: 20px; font-weight: 500; font-size: 1rem; }
 .success { color: var(--success-color); }
 .error { color: var(--error-color); }
-
-/* --- Responsive cho Thiết bị Di động --- */
 @media (max-width: 600px) {
-    body { 
-        padding: 10px; 
-    }
-    .container { 
-        padding: 20px 25px;
-    }
-    h1 { 
-        font-size: 1.6em; 
-    }
-    .logo { 
-        max-width: 160px;
-        margin-bottom: 20px;
-    }
-    button {
-        padding: 14px;
-        font-size: 1rem;
-    }
-    textarea {
-        min-height: 100px;
-    }
+    body { padding: 10px; }
+    .container { padding: 20px 25px; }
+    h1 { font-size: 1.6em; }
+    .logo { max-width: 160px; margin-bottom: 20px; }
+    button { padding: 14px; font-size: 1rem; }
+    textarea { min-height: 100px; }
 }
