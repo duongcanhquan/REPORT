@@ -13,13 +13,14 @@
     <div class="container">
         <div id="login-container">
             <img src="https://raw.githubusercontent.com/duongcanhquan/image/main/logo%20vietmy.webp" alt="Logo Viet My College" class="logo">
-            <h1>Hệ Thống Báo Cáo Vấn đề Cơ Sở </h1>
+            <h1>Hệ Thống Báo Cáo Vấn Đề Cơ Sở</h1>
             <p>Vui lòng nhập Tên hoặc Email của bạn để tiếp tục</p>
             <input type="text" id="reporter-name" placeholder="Nhập tên hoặc email..." required>
             <button id="continue-btn">Tiếp tục</button>
         </div>
 
         <div id="report-container" class="hidden">
+            <img src="https://raw.githubusercontent.com/duongcanhquan/image/main/logo%20vietmy.webp" alt="Logo Viet My College" class="logo">
             <h1>HỆ THỐNG GHI NHẬN VẤN ĐỀ</h1>
             <form id="report-form">
                 <div class="form-group">
@@ -36,25 +37,25 @@
                 <div class="report-category">
                     <h2>CƠ SỞ VẬT CHẤT</h2>
                     <p class="category-note">(Gồm: Vệ sinh, An ninh/An toàn, Thiết bị dạy học, Các vấn đề CSVC khác...)</p>
-                    <textarea id="csvc-content" name="Cơ sở Vật Chất" placeholder="Nhập nội dung báo cáo về Cơ sở Vật Chất..."></textarea>
+                    <textarea id="csvc-content" name="CoSoVatChat" placeholder="Nhập nội dung báo cáo về Cơ sở Vật Chất..."></textarea>
                 </div>
                 
                 <div class="report-category">
                     <h2>TÁC PHONG CBNV</h2>
                     <p class="category-note">(Gồm: Trang phục, Nề nếp & Giao tiếp, Các vấn đề khác về CBNV...)</p>
-                    <textarea id="tpnv-content" name="Tác Phong CBNV" placeholder="Nhập nội dung báo cáo về Tác phong CBNV..."></textarea>
+                    <textarea id="tpnv-content" name="TacphongCBNV" placeholder="Nhập nội dung báo cáo về Tác phong CBNV..."></textarea>
                 </div>
 
                 <div class="report-category">
                     <h2>TÁC PHONG SINH VIÊN</h2>
                     <p class="category-note">(Gồm: Trang phục, Nề nếp & Giao tiếp, Các vấn đề khác về Sinh viên...)</p>
-                    <textarea id="tpsv-content" name="Tác Phong Sinh Viên" placeholder="Nhập nội dung báo cáo về Tác phong Sinh viên..."></textarea>
+                    <textarea id="tpsv-content" name="TacPhongSinhVien" placeholder="Nhập nội dung báo cáo về Tác phong Sinh viên..."></textarea>
                 </div>
                 
                 <div class="report-category">
                     <h2>CÁC VẤN ĐỀ KHÁC</h2>
                     <p class="category-note">(Các góp ý, đề xuất hoặc những vấn đề không thuộc các hạng mục trên)</p>
-                    <textarea id="other-content" name="Các Vấn đề khác" placeholder="Nhập nội dung báo cáo khác..."></textarea>
+                    <textarea id="other-content" name="Khac" placeholder="Nhập nội dung báo cáo khác..."></textarea>
                 </div>
 
                 <div class="form-group file-upload-group">
@@ -72,7 +73,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Dán Web App URL MỚI NHẤT của bạn vào đây
-            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwA_HOPWaY2VlahMaLaQT3iqcURSzIBDDNC7Tp20qGEp5lo4S1gyXtQsnV3wIbS89M5Vg/exec'; 
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhEpnlPi1NkXJ6pxfldS7rfq2gQChj6_xC5w49r7KKj0D5RI6BojSNgtbuIZ9udiW6Lw/exec'; // <<<< NHỚ THAY URL CỦA BẠN
         
             const loginContainer = document.getElementById('login-container');
             const reportContainer = document.getElementById('report-container');
@@ -141,7 +142,7 @@
                         reader.onload = () => resolve({
                             fileName: file.name,
                             mimeType: file.type,
-                            fileData: reader.result
+                            fileData: reader.result // Dữ liệu base64 đầy đủ
                         });
                         reader.onerror = error => reject(error);
                     });
@@ -183,25 +184,25 @@
                     return;
                 }
         
-                const formData = new FormData();
-                formData.append('nguoiBaoCao', reporterName);
-                formData.append('coSo', coSo);
+                const payload = new FormData();
+                payload.append('nguoiBaoCao', reporterName);
+                payload.append('coSo', coSo);
         
-                // Thêm nội dung text
+                // Thêm nội dung text từ các textarea
                 textareas.forEach(textarea => {
-                    formData.append(textarea.name, textarea.value.trim());
+                    payload.append(textarea.name, textarea.value.trim());
                 });
                 
-                // Thêm thông tin của từng file vào formData
+                // Thêm thông tin của từng file vào payload
                 fileInfos.forEach((info, index) => {
-                    formData.append(`fileName${index+1}`, info.fileName);
-                    formData.append(`mimeType${index+1}`, info.mimeType);
-                    formData.append(`fileData${index+1}`, info.fileData);
+                    payload.append(`fileName${index+1}`, info.fileName);
+                    payload.append(`mimeType${index+1}`, info.mimeType);
+                    payload.append(`fileData${index+1}`, info.fileData);
                 });
         
                 submitBtn.textContent = 'Đang gửi...';
         
-                fetch(SCRIPT_URL, { method: 'POST', body: formData })
+                fetch(SCRIPT_URL, { method: 'POST', body: payload })
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 'success') {
@@ -224,6 +225,5 @@
             }
         });
     </script>
-
 </body>
 </html>
